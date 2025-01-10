@@ -5,6 +5,8 @@ import * as OBC from "@thatopen/components";
 import * as OBCF from "@thatopen/components-front";
 import { ThreeMFLoader } from "three/addons/loaders/3MFLoader.js";
 
+// download ifc from https://www.steptools.com/docs/stpfiles/ifc/
+
 (async () => {
   const container = document.getElementById("container")!;
   const components = new OBC.Components();
