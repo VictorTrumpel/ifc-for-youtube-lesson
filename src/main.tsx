@@ -28,8 +28,6 @@ import { ThreeMFLoader } from "three/addons/loaders/3MFLoader.js";
   grids.create(world);
   const casters = components.get(OBC.Raycasters);
   casters.get(world);
-  const clipper = components.get(OBC.Clipper);
-  clipper.enabled = true;
 
   components.init();
   world.scene.setup();
@@ -73,11 +71,16 @@ import { ThreeMFLoader } from "three/addons/loaders/3MFLoader.js";
     object.position.set(27, -10, 2);
   });
 
-  // window.onkeydown = (event) => {
-  //   if (event.code === "Backspace") {
-  //     clipper.delete(world);
-  //   }
-  // };
+  const clipper = components.get(OBC.Clipper);
+  clipper.enabled = true;
+  container.addEventListener("dblclick", () => {
+    clipper.create(world);
+  });
+  window.onkeydown = (event) => {
+    if (event.code === "Backspace") {
+      clipper.delete(world);
+    }
+  };
 
   async function loadIfc() {
     const file = await fetch("/house.ifc");
